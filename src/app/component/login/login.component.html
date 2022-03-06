@@ -1,0 +1,129 @@
+<div class="container4" style="
+   
+     background-image: url(./assets/img/im.png);  
+    background-repeat: no-repeat;
+    background-color:darkslateblue; 
+     margin-left: 60px; 
+    margin-top: 30px;
+    width: 90%;
+    height: 530px;
+    border: 2px solid black;
+   
+  
+
+    
+  ">
+  
+    <div class="row">
+        <div class="col-md-6 mx-auto p-0">
+            <div class="card" style="margin-left: 200px; margin-top: 10px">
+                <div class="login-box">
+                    <div class="login-snip">
+                        <input id="tab-1" type="radio" name="tab" class="sign-in" checked /><label for="tab-1" class="tab">Login</label>
+
+                        <input id="tab-2" type="radio" name="tab" class="sign-up" /><label for="tab-2" class="tab">Sign Up</label
+            >
+
+            <div class="login-space">
+              <div class="login">
+                <form [formGroup]="LoginForm" (ngSubmit)="Login()">
+                  <div class="group">
+                    <label for="user" class="label">Email ID</label>
+                        <input id="user" type="text" class="input" placeholder="Enter your Email ID" formControlName="Email" required />
+                        <div *ngIf="
+                        SignUpForm.get('Email')?.invalid &&
+                        (SignUpForm.get('Email')?.dirty ||
+                          SignUpForm.get('Email')?.touched)
+                      ">
+                            Please provide a valid email ID.
+                        </div>
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">Password</label>
+                        <input id="pass" type="password" class="input" data-type="password" placeholder="Enter your password" formControlName="Password" required />
+                        <div *ngIf="
+                        SignUpForm.get('Password')?.invalid &&
+                        (SignUpForm.get('Password')?.dirty ||
+                          SignUpForm.get('Password')?.touched)
+                      ">
+                            Password must be have 6 characters.
+                        </div>
+                    </div>
+                    <div class="group">
+                        <input id="check" type="checkbox" class="check" checked />
+                        <label for="check"><span class="icon"></span> Keep me Signed in</label
+                    >
+                  </div>
+
+                  <div class="group">
+                    <input type="submit" class="button" value="Sign In" />
+                  </div>
+                </form>
+              </div>
+
+              <!-- <------------------------------------------------------------------------------------------------------------------>
+
+              <form [formGroup]="SignUpForm" (ngSubmit)="signUp()">
+                <div class="sign-up-form">
+                  <div class="group">
+                    <label for="user" class="label">Email ID</label>
+                        <input id="user" formControlName="Email" type="text" class="input" placeholder="Create your Email" required />
+                        <div *ngIf="
+                        SignUpForm.get('Email')?.invalid &&
+                        (SignUpForm.get('Email')?.dirty ||
+                          SignUpForm.get('Email')?.touched)
+                      ">
+                            Please provide a valid email ID.
+                        </div>
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">Password</label>
+                        <input id="pass" type="password" formControlName="Password" class="input" data-type="password" placeholder="Create your password" required />
+                        <div *ngIf="
+                        SignUpForm.get('Password')?.invalid &&
+                        (SignUpForm.get('Password')?.dirty ||
+                          SignUpForm.get('Password')?.touched)
+                      ">
+                            Password must be have 6 characters.
+                        </div>
+                    </div>
+
+                    <div class="group">
+                        <label for="pass" class="label">Repeat Password</label>
+                        <input id="pass" type="password" formControlName="ConfPassword" class="input" data-type="password" placeholder="Repeat your password" required />
+                        <div *ngIf="
+                        SignUpForm.get('ConfPassword')?.invalid &&
+                        (SignUpForm.get('ConfPassword')?.dirty ||
+                          SignUpForm.get('ConfPassword')?.touched)
+                      ">
+                            Password does not match.Enter it again.
+                        </div>
+                    </div>
+                    <div class="group">
+                        <label for="pass" class="label">Mobile Number</label>
+                        <input id="pass" type="text" class="input" formControlName="Phone" placeholder="Enter your Mobile Number" required />
+                        <div *ngIf="
+                        SignUpForm.get('Phone')?.invalid &&
+                        (SignUpForm.get(' Phone')?.dirty ||
+                          SignUpForm.get('Phone')?.touched)
+                      ">
+                            Mobile Number must be of 10 digits.
+                        </div>
+                    </div>
+                    <div class="group" style="padding-left: 30px">
+                        <button type="submit" class="btn btn-primary mb-5">
+                      SIGN UP
+                    </button> &nbsp; &nbsp;
+                        <button type="reset" class="btn btn-danger mb-5">
+                      RESET
+                    </button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>

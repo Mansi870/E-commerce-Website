@@ -1,0 +1,32 @@
+.form-control {
+    border-radius: 3px;
+    width: 400px;
+    margin-left: 100px;
+}
+
+.search-icon {
+    position: absolute;
+    z-index: 10;
+    /* right: 59%; */
+    top: 20px;
+    color: black;
+    right: 460px;
+}
+
+button {
+    text-align: center;
+}
+
+
+
+a {
+    color: white;
+    margin-left: 40px;
+    text-align: center;
+    padding: 0;
+    text-decoration: none;
+}
+
+a:hover {
+    color: black;
+}

@@ -1,0 +1,186 @@
+<div style="background-color:linen;">
+<ng-container *ngIf="products.length != 0">
+    <div class="container">
+        <div class="card-table">
+            <div class="cart-product">
+                <table class="table table-success table-striped">
+                    <thead>
+                        <tr>
+                            <th>Sr.No</th>
+                            <th>Product Name</th>
+                            <th>Product Image</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of products; let i = index">
+                            <td>{{ i + 1 }}</td>
+                            <td>{{ item.title }}</td>
+                            <td>
+                                <img style="width: 120px" src="{{ item.image }}" alt="" />
+                            </td>
+                            <td style="width: 25%">{{ item.description }}</td>
+                            <th style="width: 12%">{{ item.price }}</th>
+                            <td style="width: 12%">{{ item.quantity }}</td>
+                            <td style="width: 12%">{{ item.total }}</td>
+                            <td>
+                                <button (click)="removeItem(item)" class="btn btn-danger">
+                  <i class="fas fa-trash-alt"></i>
+                </button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"></td>
+                            <td>
+                                <button (click)="emptycart()" class="btn btn-danger">
+                  Empty Cart
+                </button>
+                            </td>
+                            <td>
+                                <button routerLink="/products" class="btn btn-primary">
+                  Shop More
+                </button>
+                            </td>
+                            <td><a class="btn btn-success"  routerLinkActive="active" routeLink="/checkout" href="checkout" data-bs-toggle="modal" data-bs-target="#exampleModal">Checkout</a></td>
+                            <td>
+                                <strong>Grand Total : ${{ grandTotal }}</strong>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="products.length == 0">
+    <div class="container">
+        <div class="card">
+            <h5 class="card-title"></h5>
+        </div>
+        <div class="center">
+            <img src="https://th.bing.com/th/id/R.d41b0f0ab9fb615c319ffaeb2b1ec506?rik=PP4z381RlSeRjg&riu=http%3a%2f%2ficon-park.com%2fimagefiles%2fshopping_cart_light_orange.png&ehk=IBLAzmeN%2b%2bBBBoUN76O28ni8e0TN1ifCsCSPUaagoYg%3d&risl=&pid=ImgRaw&r=0" alt="" />
+            <h4>Your cart is empty!</h4>
+            <!-- <h6>Add item to it now</h6> -->
+            <button routerLink="/products" class="btn btn-primary">Shop Now</button>
+        </div>
+    </div>
+</ng-container>
+</div>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog" >
+        <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Checkout</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" >
+        
+                <div class="d-grid gap-2 ">
+                <button class="btn btn-outline-info"  type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" width="100%">
+                  Add Address
+                </button>
+                
+            </div>
+      
+            
+              <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    <form class="checkout-form">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group mb-4">
+                                  <label for="first_name">Email address </label>
+                                  <input type="text" class="form-control" id="email" placeholder="" #email>
+                               </div>
+                            </div>
+   
+                           <div class="col-lg-12">
+                               <div class="form-group mb-4">
+                                 <label for="first_name">Complete Address</label>
+                                 <input type="text" class="form-control" id="street" placeholder="" #address>
+                              </div>
+                           </div>
+   
+                            <div class="col-lg-12">
+                               <div class="form-group mb-4">
+                                 <label for="first_name">Town / City /Pincode</label>
+                                 <input type="text" class="form-control" id="city" placeholder="" #city>
+                              </div>
+                           </div>
+                            <div class="col-lg-12">
+                               <div class="form-group mb-4">
+                                 <label for="first_name">Phone </label>
+                                 <input type="text" class="form-control" id="phone" placeholder="" #phone>
+                              </div>
+                           </div>
+                           <div class="col-lg-12">
+                            <div class="form-group mb-4">
+                              <button type="button" class="btn btn-primary" (click)="addAddress( email.value,
+                              
+                              address.value,
+                              city.value,
+                              phone.value)" >Add </button>
+                           </div>
+                        </div>
+                          
+   
+                        </div>
+                     </form>
+                    
+                  </div>
+               
+                </div>
+                <br>
+                    <div class="d-grid gap-2 ">
+                        <div class="form-group">
+                             <div class="d-grid gap-2 ">
+                            <select class="form-select" aria-label="Default select example" class="btn btn-outline-info" > 
+                                <option selected>Select Payment Method</option>
+                                <option value="1">Cash</option>
+                                <option value="2">Google Pay/Paytm/Any UPI</option>
+                                <option value="3">Card</option>
+                              </select>
+                            
+                          </div>
+                          
+                    </div>
+        </div>
+
+        <div>
+           
+            <div *ngIf="arrayDemo.length>0">
+                <h5 style="color: darkslategrey;">Your Complete Address-</h5>
+                <div *ngFor ="let obj of arrayDemo">
+                    {{obj.address+"," +obj.city +" Mobile :"+obj.phone}}
+                </div>
+                
+            </div>
+                    
+            <p>` Grand Total is- ${{ grandTotal}}`</p>
+        </div>
+              
+  
+                  
+            
+                   
+   
+
+            
+            
+      
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" (click)="Order()">Order Placed </button>
+        </div>
+      </div>
+     </div> 
+   </div> 
+  </div>
+  </div>

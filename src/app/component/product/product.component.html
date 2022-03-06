@@ -1,0 +1,129 @@
+<!-- <div class="card-top container-fluid" style="background-color: white">
+    <div class="container d-flex" style="margin-left: 400px; padding: 10px 70px 10px 10px"> -->
+        <!-- <div >  -->
+       <div class="cat" style=" width: 20%; border: 8px solid rgb(59, 68, 79);">
+        
+           <h5 class="text-dark" style="text-align: center;padding: 10px; margin-top: 10px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Shop By Category</h5>
+           <li>
+            <div class="item">
+                <a (click)="filter('')">
+                    <img src="https://rukminim1.flixcart.com/flap/128/128/image/f15c02bfeb02d15d.png?q=100" alt="" />
+                    <h6>All products</h6>
+                </a>
+            </div>
+           </li>
+           <li>
+            <div class="item">
+                <a (click)="filter('women')">
+                    <img src="https://th.bing.com/th/id/OIP.s7oZlo9vdv-N60TeLmPoOAHaHa?w=201&h=202&c=7&r=0&o=5&dpr=1.5&pid=1.7" alt="" />
+                    <h6>Women</h6>
+                </a>
+            </div>
+           </li>
+           <li>
+            <div class="item">
+                <a (click)="filter('men')">
+                    <img style="width: 62px; margin-top: 5px" src="https://media.istockphoto.com/vectors/collection-mens-clothing-vector-id948122580?k=20&m=948122580&s=612x612&w=0&h=SzxlbK12C4dgUsFgdiwmVrREnUPROl2rwyvO2cqyisE=" alt="" />
+                    <h6>Men</h6>
+                </a>
+            </div>
+           </li>
+           <li>
+            <div class="item">
+                <a (click)="filter('kids')">
+                    <img src="https://th.bing.com/th/id/OIP.EBiQTrT-vZ9LDxfG7bqwoQHaJ8?w=119&h=180&c=7&r=0&o=5&dpr=1.5&pid=1.7" alt="" height="65px" width="50px" />
+                    <h6>kids</h6>
+                </a>
+            </div>
+           </li>
+           <li>
+            <div class="item">
+                <a (click)="filter('electronics')">
+                    <img src="https://rukminim1.flixcart.com/flap/128/128/image/69c6589653afdb9a.png?q=100" alt="" />
+                    <h6>Electronics</h6>
+                </a>
+            </div>
+            <br>
+           </li>
+            <div style="border:1px solid black; ">
+                <h5 class="text-dark" style="text-align: center;padding: 10px; font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Price</h5>
+                <div class="w-100">
+                
+                <p class="text-dark d-flex" style="background-color: white;" >
+                <input type="range" class="form-range" min="10" max="1000" id="custommRange"  name="Price" value="50" oninput="this.nextElementSibling.value=this.value" (input)="priceFilter($event.target)"/>
+                <output>50</output>
+                </p>
+                </div>
+            </div>
+                
+
+           <div style="border:1px solid black">  
+               <style>
+                   .rating-list li {
+    float: right;
+    color: white;
+    margin-left: 20px;
+                  
+  }
+  
+  .rating-list li:hover,
+  .rating-list li:hover ~ li, .rating-list li.selected {
+    color: #ffd700;
+  }
+  
+  .rating-list {
+    display: inline-block;
+    list-style: none;
+  }
+
+               </style>
+             
+            <h5 class="text-dark" style="text-align: center;padding: 10px; margin-top: 10px;font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Ratings
+            </h5>
+             <div class="d-flex justify-content-start"> 
+            <ul
+                class="list-inline rating-list"
+                *ngFor="let star of stars"
+                style ="display: inline-block; ">
+                <li
+                    (click)="ratingFilter(star)"
+                    [ngClass]="{selected:star <= selectedValue}">
+                    <i class="fa fa-star"></i>
+                </li>
+            </ul>
+        </div>
+           </div>
+       </div>
+       
+         
+
+    
+<div class="container" style="background-color: dimgray;  margin-left: 250px;margin-top: 10px; width: 1000px;padding: 10px 70px 10px 10px">
+    <div class="row">
+        <ng-container *ngFor="let item of filterCategory | filter: searchKey:'title'">
+            <div class="card col-6 col-md-4">
+                <img src="{{ item.image }}" alt="" />
+                <h5 style="
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100ch;
+          ">
+                    {{ item.title }}
+                </h5>
+                <p style="
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100ch;
+          ">
+                    {{ item.description }}
+                </p>
+                <p><strong>Price:</strong> ${{ item.price }}</p>
+                <button class="btn btn-outline-info"kī (click)="addtocart(item)">
+          Add to cart
+        </button>
+            </div>
+        </ng-container>
+    </div>
+</div>

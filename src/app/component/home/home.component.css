@@ -1,0 +1,23 @@
+container1 {
+    background-color: black;
+}
+
+hr {
+    border: 1px solid black;
+}
+
+p.card-text {
+    font-size: 25px;
+}
+
+a {
+    color: black;
+}
+
+a:hover {
+    color: black;
+}
+
+.btn btn-dark {
+    margin-left: 100px;
+}
